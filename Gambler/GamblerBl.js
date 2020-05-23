@@ -1,3 +1,10 @@
+/**************************************
+* @description : Gambler program to win the cash and to find percentage of win or lose.
+* @purpose : Program to play gambler game to win the cash amount.
+* @return : Return percentage of wins and lose in gambler program. 
+* @parameter : stake goal and trails
+****************************************/
+
 gamblerMain = (stake, goal, trails) => {
     let lose = 0;
     let wins = 0;
