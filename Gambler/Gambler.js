@@ -4,4 +4,13 @@ let input = require('readline-sync');
 let stake = input.questionInt('Enter the stake amount : ');
 let goal = input.questionInt('Enter your goal : ');
 let trails = input.questionInt('Enter number of trails you want to play : ');
-gamblerMain(stake,goal,trails)
+
+let gamblerValidation = () => {
+    if ((stake, goal, trails == undefined) | (stake, goal, trails == 0)) {
+        console.log('Input correct number stake goal and trails value greater than 0');
+    }
+    else {
+        gamblerMain(stake, goal, trails);
+    }
+}
+gamblerValidation();
