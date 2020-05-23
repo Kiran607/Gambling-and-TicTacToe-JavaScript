@@ -1,26 +1,33 @@
+/******************************************************
+* @description : The program is design to play tic tac toe in system.
+* @purpose : The program to play Tic tac toe game in system.
+* @return : Return tic tac toe board to play the game. 
+* @parameter : rows columns and input.
+******************************************************/
+
 let gameBoard = [];
 let player;
 let gameStatus;
 let letter = "";
 let input = require('readline-sync');
 let selectInput;
-let row;
-let column;
+let rows;
+let columns;
 
-reset = () => {
+reset = () => {                                                    //to reset board
     gameBoard = ['.', '.', '.', '.', '.', '.', '.', '.', '.'];
     player = 1;
     gameStatus = 1;
 }
 
-print = () => {
+print = () => {                                                    //To print game board 
     console.log("r\c  0 1 2");
     console.log("0   ", gameBoard[0], gameBoard[1], gameBoard[2]);
     console.log("1   ", gameBoard[3], gameBoard[4], gameBoard[5]);
     console.log("2   ", gameBoard[6], gameBoard[7], gameBoard[8]);
 }
 
-set = (rows, columns, input) => {
+set = (rows, columns, input) => {                                 //to print value in board
     let index = rows * 3 + columns;
     if (gameBoard[index] = ".") {
         gameBoard[index] = input;
@@ -39,16 +46,16 @@ checkMatch = (num1, num2, num3) => {
 checkGame = () => {                                 //Function to check wining possibilites
     checkMatch[0, 1, 2]
     checkMatch[3, 4, 5],
-        checkMatch[6, 7, 8],
-        checkMatch[0, 3, 6],
-        checkMatch[1, 4, 7],
-        checkMatch[2, 5, 8],
-        checkMatch[0, 4, 8],
-        checkMatch[2, 4, 6]
+    checkMatch[6, 7, 8],
+    checkMatch[0, 3, 6],
+    checkMatch[1, 4, 7],
+    checkMatch[2, 5, 8],
+    checkMatch[0, 4, 8],
+    checkMatch[2, 4, 6]
 }
 computer = () => {                                 //FUnction for generating row and column values
-    row = Math.random() % 3 | 0;
-    column = Math.random() % 3 | 0;
+    rows = Math.random() % 3 | 0;
+    columns = Math.random() % 3 | 0;
 }
 
 ticTacToeMain = () => {
@@ -56,11 +63,11 @@ ticTacToeMain = () => {
     while (true) {
         if (player == 1) {
             letter = "O";                          //Letter for to play Game
-            console.log("Player player1 trun:", letter);
+            console.log("Player computer's trun:", letter);
 
         } else {
             letter = "X";
-            console.log("Player player2 trun:", letter);
+            console.log("Player player's trun:", letter);
         }
         print();
         console.log();
@@ -99,3 +106,4 @@ ticTacToeMain = () => {
         }
     }
 }
+ticTacToeMain();
