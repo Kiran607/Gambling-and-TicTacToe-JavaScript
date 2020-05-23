@@ -1,3 +1,13 @@
+/****************************************************
+* @Execution : default node : cmd> Gambler.js
+* @Purpose : Program to play gambler game to win the cash amount.
+* @Description : Return percentage of wins and lose in gambler program.
+* @OverView : Gambler program to play game for amount wins or lose.
+* @author : Kiran IC
+* @Version : 1.0
+* @since : 23-May-2020
+******************************************************/
+
 //Constant
 const gambleing = require('./gamblerBl');
 let input = require('readline-sync');
