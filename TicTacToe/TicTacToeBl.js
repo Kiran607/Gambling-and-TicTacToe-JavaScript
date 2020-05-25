@@ -5,14 +5,15 @@
 * @parameter : rows columns and input.
 ******************************************************/
 
+let input = require('readline-sync');
 let gameBoard = [];
 let player;
 let gameStatus;
 let letter = "";
-let input = require('readline-sync');
 let selectInput;
 let rows;
 let columns;
+let index;
 
 reset = () => {                                                    //to reset board
     gameBoard = ['.', '.', '.', '.', '.', '.', '.', '.', '.'];
@@ -27,10 +28,10 @@ print = () => {                                                    //To print ga
     console.log("2   ", gameBoard[6], gameBoard[7], gameBoard[8]);
 }
 
-set = (rows, columns, input) => {                                 //to print value in board
-    let index = rows * 3 + columns;
-    if (gameBoard[index] = ".") {
-        gameBoard[index] = input;
+set = (rows, columns, letter) => {                                 //to print value in board
+    index = rows * 3 + columns;
+    if (gameBoard[index] == ".") {
+        gameBoard[index] = letter;
         player = player % 2 + 1;
     }
     else {
@@ -54,8 +55,8 @@ checkGame = () => {                                 //Function to check wining p
     checkMatch[2, 4, 6]
 }
 computer = () => {                                 //FUnction for generating row and column values
-    rows = Math.random() % 3 | 0;
-    columns = Math.random() % 3 | 0;
+    rows = Math.random() * 3 | 0;
+    columns = Math.random() * 3 | 0;
 }
 
 ticTacToeMain = () => {
@@ -79,7 +80,7 @@ ticTacToeMain = () => {
                 computer();                                         //calling computer for row and column values
                 selectInput = 1;
             }
-            if (player == 2) {
+            else if (player == 2) {
                 selectInput = input.questionInt("Enter 1 or 2 :");
                 rows = input.questionInt("Enter row value : ");
                 columns = input.questionInt("Enter column value : ");
@@ -94,16 +95,15 @@ ticTacToeMain = () => {
             else {
                 console.log("Select 1 or 2");
             }
-            checkGame();
-            if (gameStatus != 1) {
-                print();
-                console.log("Game over");
-                player = player % 2 + 1;                            //changing player to computer
-                console.log("player", player, letter, "wins");
-                let newGame = input.questionInt("Enter 1 for new match: ");
-                newGame == 1 ? reset() : console.log();
-            }
+        }
+        checkGame();
+        if (gameStatus != 1) {
+            print();
+            console.log("Game over");
+            player = player % 2 + 1;                            //changing player to computer
+            console.log("player", player, letter, "wins");
+            let newGame = input.questionInt("Enter 1 for new match: ");
+            newGame == 1 ? reset() : console.log();
         }
     }
 }
-ticTacToeMain();
