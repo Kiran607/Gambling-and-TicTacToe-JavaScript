@@ -40,21 +40,20 @@ set = (rows, columns, letter) => {                                 //to print va
 }
 
 checkMatch = (num1, num2, num3) => {
-    if (gameBoard[num1] != "." && gameBoard[num1] == gameBoard[num2] && gameBoard[num2] == gameBoard[num3]) {
+    if (gameBoard[num1] != "." && gameBoard[num1] == gameBoard[num2] && gameBoard[num2] == gameBoard[num3])
         gameStatus = 0;
-    }
 }
-checkGame = () => {                                 //Function to check wining possibilites
-    checkMatch[0, 1, 2]
-    checkMatch[3, 4, 5],
-    checkMatch[6, 7, 8],
-    checkMatch[0, 3, 6],
-    checkMatch[1, 4, 7],
-    checkMatch[2, 5, 8],
-    checkMatch[0, 4, 8],
-    checkMatch[2, 4, 6]
+checkGame = () => {                                                //Function to check wining possibilites
+    checkMatch(0, 1, 2);
+    checkMatch(3, 4, 5);
+    checkMatch(6, 7, 8);
+    checkMatch(0, 3, 6);
+    checkMatch(1, 4, 7);
+    checkMatch(2, 5, 8);
+    checkMatch(0, 4, 8);
+    checkMatch(2, 4, 6);
 }
-computer = () => {                                 //FUnction for generating row and column values
+computer = () => {                                                 //FUnction for generating row and column values
     rows = Math.random() * 3 | 0;
     columns = Math.random() * 3 | 0;
 }
@@ -63,18 +62,17 @@ ticTacToeMain = () => {
     reset();
     while (true) {
         if (player == 1) {
-            letter = "O";                          //Letter for to play Game
+            letter = "O";                                           //Letter for to play Game
             console.log("Player computer's trun:", letter);
-
-        } else {
+        }
+        else {
             letter = "X";
             console.log("Player player's trun:", letter);
         }
         print();
         console.log();
-        console.log("Command");
-        console.log("1 ==>for set[row][column]");
-        console.log('2 ==>for restart');
+        console.log("Select 1 for set[row][column]");
+        console.log('Select 2 for restart');
         while (true) {
             if (player == 1) {
                 computer();                                         //calling computer for row and column values
@@ -97,10 +95,11 @@ ticTacToeMain = () => {
             }
         }
         checkGame();
+
         if (gameStatus != 1) {
             print();
             console.log("Game over");
-            player = player % 2 + 1;                            //changing player to computer
+            player = player % 2 + 1;                                //changing player to computer
             console.log("player", player, letter, "wins");
             let newGame = input.questionInt("Enter 1 for new match: ");
             newGame == 1 ? reset() : console.log();
